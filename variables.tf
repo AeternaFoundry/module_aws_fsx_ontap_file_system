@@ -13,6 +13,7 @@ Optional:
     - fsx_admin_password
     - ha_pairs
     - kms_key_id
+    - network_type
     - region
     - route_table_ids
     - security_group_ids
@@ -38,6 +39,7 @@ EOT
     storage_type                      = optional(string)
     security_group_ids                = optional(set(string))
     route_table_ids                   = optional(set(string))
+    region                            = optional(string)
     kms_key_id                        = optional(string)
     throughput_capacity_per_ha_pair   = optional(number)
     ha_pairs                          = optional(number)
@@ -45,7 +47,7 @@ EOT
     endpoint_ip_address_range         = optional(string)
     daily_automatic_backup_start_time = optional(string)
     automatic_backup_retention_days   = optional(number)
-    region                            = optional(string)
+    network_type                      = optional(string)
     weekly_maintenance_start_time     = optional(string)
     disk_iops_configuration = optional(object({
       iops = optional(number)
@@ -108,6 +110,6 @@ EOT
     ])
     error_message = "all of: must be between 7 and 7 characters; must be in the format d:HH:MM"
   }
-  # Note: 7 additional provider-side validators are enforced at apply time but not mirrored as validation{} blocks here (bespoke or non-mechanically-translatable).
+  # Note: 8 additional provider-side validators are enforced at apply time but not mirrored as validation{} blocks here (bespoke or non-mechanically-translatable).
 }
 

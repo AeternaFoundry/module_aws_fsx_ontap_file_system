@@ -11,6 +11,7 @@ resource "aws_fsx_ontap_file_system" "fsx_ontap_file_systems" {
   storage_type                      = each.value.storage_type
   security_group_ids                = each.value.security_group_ids
   route_table_ids                   = each.value.route_table_ids
+  region                            = each.value.region
   kms_key_id                        = each.value.kms_key_id
   throughput_capacity_per_ha_pair   = each.value.throughput_capacity_per_ha_pair
   ha_pairs                          = each.value.ha_pairs
@@ -18,7 +19,7 @@ resource "aws_fsx_ontap_file_system" "fsx_ontap_file_systems" {
   endpoint_ip_address_range         = each.value.endpoint_ip_address_range
   daily_automatic_backup_start_time = each.value.daily_automatic_backup_start_time
   automatic_backup_retention_days   = each.value.automatic_backup_retention_days
-  region                            = each.value.region
+  network_type                      = each.value.network_type
   weekly_maintenance_start_time     = each.value.weekly_maintenance_start_time
 
   dynamic "disk_iops_configuration" {
